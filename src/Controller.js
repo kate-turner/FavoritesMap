@@ -27,7 +27,7 @@ export default function Controller() {
 
     return (
         <div>
-            <FavoriteList handleSetActiveViewPort={handleSetActiveViewPort}/>
+            <FavoriteList handleSetActiveViewPort={handleSetActiveViewPort} favoriteList={favoriteList} handleUpdateFavoritesList={handleUpdateFavoritesList}/>
             <MapView activeViewPort={activeViewPort} updateFavoritesList={handleUpdateFavoritesList}/>
         </div>
     )
