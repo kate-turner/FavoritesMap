@@ -13,7 +13,7 @@ mapboxGl.accessToken = 'pk.eyJ1IjoiZGFzdWxpdCIsImEiOiJjaXQzYmFjYmkwdWQ5MnBwZzEzZ
 // const ACCESS_TOKEN = 'pk.eyJ1IjoiZGFzdWxpdCIsImEiOiJjaXQzYmFjYmkwdWQ5MnBwZzEzZnNub2hhIn0.EDJ-lIfX2FnKhPw3nqHcqg';
 
 export default function MapView(props) {
-    const {activeViewPort} = props
+    const {activeViewPort, updateFavoritesList} = props
 
     const mapContainer = useRef(null);
     const map = useRef(null);
@@ -34,52 +34,18 @@ export default function MapView(props) {
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
         map.current.flyTo(activeViewPort)
-        // map.current.on('move', () => {
-        //     setLng(map.current.getCenter().lng.toFixed(4));
-        //     setLat(map.current.getCenter().lat.toFixed(4));
-        //     setZoom(map.current.getZoom().toFixed(2));
-        // });
     }, [activeViewPort]);
 
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
         map.current.on("click", (e) => {
             console.log(e)
-            setGeoCodeCoord(e.lngLat)
+            // setGeoCodeCoord(e.lngLat)
             reverseGeocode(e.lngLat)
-            // saveToFavorites(e.lngLat)
+            updateFavoritesList(e.lngLat)
+            saveToFavorites(e.lngLat)
         })
     });
-
-    // useEffect(() => {
-    //     const containerEl = mapContainer;
-    //     if (containerEl && containerEl.current) {
-    //         mapboxGl.accessToken = ACCESS_TOKEN;
-    //         const map = new mapboxGl.Map({
-    //             container: containerEl.current,
-    //             style: style,
-    //             // center: [-122.396449, 37.791256],
-    //             // zoom: 15
-    //             ...activeViewPort
-    //         });
-    //         setMap(map);
-    //         map.addControl(
-    //             new MapboxGeocoder({
-    //                 accessToken: ACCESS_TOKEN,
-    //                 mapboxgl: mapboxGl,
-    //                 reverseGeocode: true
-    //             })
-    //         );
-    //         map.on("click", (e) => {
-    //             console.log(e)
-    //             setGeoCodeCoord(e.lngLat)
-    //             reverseGeocode(e.lngLat)
-    //             // saveToFavorites(e.lngLat)
-    //         })
-    //     }
-    // }, [])
-
-
 
     return (
         <div ref={mapContainer} className="map-container"/>

@@ -8,16 +8,27 @@ export default function Controller() {
         center: [-122.396449, 37.791256],
         zoom: 15
     })
+    const [favoriteList, updateFavoritesList] = useState([])
 
     function handleSetActiveViewPort(coordinates) {
         console.log("click")
         setActiveViewPort(coordinates)
     }
 
+    function handleUpdateFavoritesList(favorite) {
+        console.log(favorite)
+        updateFavoritesList([...favoriteList, favorite]);
+        console.log("hit favorites")
+    }
+
+    useEffect(() => {
+        console.log(favoriteList)
+    }, [favoriteList])
+
     return (
         <div>
             <FavoriteList handleSetActiveViewPort={handleSetActiveViewPort}/>
-            <MapView activeViewPort={activeViewPort}/>
+            <MapView activeViewPort={activeViewPort} updateFavoritesList={handleUpdateFavoritesList}/>
         </div>
     )
 }
