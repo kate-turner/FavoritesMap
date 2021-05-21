@@ -15,7 +15,8 @@ export default function MapView(props) {
     const mapContainer = React.createRef();
     const [map, setMap] = useState(null)
     const [geoCodeCoord, setGeoCodeCoord] = useState(null)
-
+    console.log('viewport changed')
+    console.dir(activeViewPort)
 
     useEffect(() => {
         const containerEl = mapContainer;
@@ -43,7 +44,7 @@ export default function MapView(props) {
                 // saveToFavorites(e.lngLat)
             })
         }
-    }, [])
+    }, [activeViewPort])
 
 
 

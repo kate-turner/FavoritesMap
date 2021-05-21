@@ -10,15 +10,13 @@ export default function Controller() {
     })
 
     function handleSetActiveViewPort(coordinates) {
-        setActiveViewPort({
-            center: [-122.396449, 37.791256],
-            zoom: 15
-        })
+        console.log("click")
+        setActiveViewPort(coordinates)
     }
 
     return (
         <div>
-            <FavoriteList/>
+            <FavoriteList handleSetActiveViewPort={handleSetActiveViewPort}/>
             <MapView activeViewPort={activeViewPort}/>
         </div>
     )
