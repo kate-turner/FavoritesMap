@@ -10,11 +10,16 @@ export default function ListItem(props) {
             zoom: 15
         })
     }
+
+    function onDeleteClick(favorite) {
+        handleUpdateFavoritesList(favorite, "delete")
+    }
+
     return (
         <div>
-            {favorite.lng}{favorite.lat}
-            <button onClick={() => onFavoriteClick(favorite)}/>
-            This is a list
+            <button onClick={() => onFavoriteClick(favorite)}> <h1>{favorite.lng}{favorite.lat}</h1> </button>
+
+            <button onClick={() => onDeleteClick(favorite)}> <h4>Delete</h4> </button>
         </div>
     )
 }

@@ -42,7 +42,7 @@ export default function MapView(props) {
             console.log(e)
             // setGeoCodeCoord(e.lngLat)
             reverseGeocode(e.lngLat)
-            updateFavoritesList(e.lngLat)
+            updateFavoritesList(e.lngLat, "add")
             saveToFavorites(e.lngLat)
         })
     });

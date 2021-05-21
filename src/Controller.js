@@ -15,10 +15,18 @@ export default function Controller() {
         setActiveViewPort(coordinates)
     }
 
-    function handleUpdateFavoritesList(favorite) {
-        console.log(favorite)
-        updateFavoritesList([...favoriteList, favorite]);
-        console.log("hit favorites")
+    function handleUpdateFavoritesList(favorite, mode) {
+        if(mode === "add") {
+            console.log(favorite)
+            updateFavoritesList([...favoriteList, favorite]);
+            console.log(mode)
+        }
+        if(mode === "delete"){
+            console.log(favorite)
+            const newFavorites = favoriteList.filter((f) => f !== favorite);
+            updateFavoritesList(newFavorites);
+            console.log(mode)
+        }
     }
 
     useEffect(() => {
