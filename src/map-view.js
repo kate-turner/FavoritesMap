@@ -38,12 +38,10 @@ export default function MapView(props) {
 
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
-        map.current.on("click", (e) => {
-            console.log(e)
-            // setGeoCodeCoord(e.lngLat)
-            reverseGeocode(e.lngLat)
-            updateFavoritesList(e.lngLat, "add")
-            saveToFavorites(e.lngLat)
+        map.current.on("click", async (e) => {
+            const locationData = (await reverseGeocode(e.lngLat)).data
+            console.log(locationData)
+            locationData.features.length > 0 ? updateFavoritesList(e.lngLat, "add"): console.log('Oops, looks like you did not choose a valid Point of Interest. Try again!')
         })
     });
 
@@ -51,5 +49,3 @@ export default function MapView(props) {
         <div ref={mapContainer} className="map-container"/>
     )
 }
-
-export {MapView}
