@@ -9,10 +9,11 @@ export default function FavoriteList(props) {
     return (
         <List>
             <h2> Favorites</h2>
-            {favoriteList.map((favorite) =>
-                <ListItem handleSetActiveViewPort={handleSetActiveViewPort} favorite={favorite}
+            { favoriteList && favoriteList.map((favorite, index) =>
+                <ListItem key={index} handleSetActiveViewPort={handleSetActiveViewPort} favorite={favorite}
                           handleUpdateFavoritesList={handleUpdateFavoritesList}/>
             )}
+
         </List>
     )
 }

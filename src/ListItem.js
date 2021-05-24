@@ -3,7 +3,7 @@ import {Button, List} from 'semantic-ui-react'
 
 
 export default function ListItem(props) {
-    const {handleSetActiveViewPort, favorite, handleUpdateFavoritesList} = props
+    const {handleSetActiveViewPort, favorite, handleUpdateFavoritesList } = props
 
     function onFavoriteClick(favorite) {
         handleSetActiveViewPort({
@@ -19,15 +19,19 @@ export default function ListItem(props) {
     return (
         <List.Item>
             <List.Content>
-                <List.Header as='a' onClick={() => onFavoriteClick(favorite)}>{favorite.lng} / {favorite.lat}>
+                <List.Header as='a' onClick={() => onFavoriteClick(favorite)}> {favorite.lng}
                 </List.Header>
+
+                <List.Description>
+                    {favorite.lat}
+                </List.Description>
                 <List.Description>
                     <Button onClick={() => onDeleteClick(favorite)}>Delete</Button>
                 </List.Description>
             </List.Content>
 
 
-
         </List.Item>
+
     )
 }

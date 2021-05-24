@@ -19,7 +19,7 @@ export default function Controller() {
     function handleUpdateFavoritesList(favorite, mode) {
         if (mode === "add") {
             console.log(favorite)
-            updateFavoritesList([...favoriteList, favorite]);
+            updateFavoritesList(favoriteList => [favorite, ...favoriteList]);
             console.log(mode)
         }
         if (mode === "delete") {
@@ -29,10 +29,6 @@ export default function Controller() {
             console.log(mode)
         }
     }
-
-    useEffect(() => {
-        console.log(favoriteList)
-    }, [favoriteList])
 
     return (
         <Grid>
