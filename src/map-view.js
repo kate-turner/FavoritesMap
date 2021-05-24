@@ -41,7 +41,8 @@ export default function MapView(props) {
         map.current.on("click", async (e) => {
             const locationData = (await reverseGeocode(e.lngLat)).data
             console.log(locationData)
-            locationData.features.length > 0 ? updateFavoritesList(e.lngLat, "add"): console.log('Oops, looks like you did not choose a valid Point of Interest. Try again!')
+            const metaLocationData = {...locationData.features[0], ...e.lngLat}
+            locationData.features.length > 0 ? updateFavoritesList(metaLocationData, "add"): console.log('Oops, looks like you did not choose a valid Point of Interest. Try again!')
         })
     }, []);
 
