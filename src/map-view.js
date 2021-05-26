@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import mapboxGl from 'mapbox-gl';
 import style from './data/style.json';
 import {reverseGeocode} from "./utils";
-
 mapboxGl.accessToken = 'pk.eyJ1IjoiZGFzdWxpdCIsImEiOiJjaXQzYmFjYmkwdWQ5MnBwZzEzZnNub2hhIn0.EDJ-lIfX2FnKhPw3nqHcqg';
 
 export default function MapView(props) {
@@ -28,10 +27,11 @@ export default function MapView(props) {
     useEffect(() => {
         if (!map.current) return;
         map.current.on("click", async (e) => {
-            const locationData = (await reverseGeocode(e.lngLat)).data
-            console.log(locationData)
-            const metaLocationData = {...locationData.features[0], ...e.lngLat}
-            locationData.features.length > 0 ? handleUpdateFavoritesList(metaLocationData, "add") : console.log('Oops, looks like you did not choose a valid Point of Interest. Try again!')
+            const featureLocationData = (await reverseGeocode(e.lngLat)).data
+            console.log(featureLocationData)
+            const metaLocationData = {...featureLocationData.features[0], ...e.lngLat}
+            // featureLocationDatalocationData.features.length > 0 ? handleUpdateFavoritesList(metaLocationData, "add") : console.log('Oops, looks like you did not choose a valid Point of Interest. Try again!')
+            handleUpdateFavoritesList(metaLocationData, "add")
         })
     }, []);
 
