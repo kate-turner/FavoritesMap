@@ -8,8 +8,8 @@ export default function FavoriteList(props) {
     const {handleSetActiveViewPort, favoriteList, handleUpdateFavoritesList} = props
 
     return (
-        <List>
-            <h2> Favorites</h2>
+        <List style={{maxHeight: '812px', overflow: 'auto'}} divided>
+            <h2>Favorites</h2>
             { favoriteList && favoriteList.map((favorite, index) =>
                 <ListItem key={index} handleSetActiveViewPort={handleSetActiveViewPort} favorite={favorite}
                           handleUpdateFavoritesList={handleUpdateFavoritesList}/>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, List} from 'semantic-ui-react'
+import {Button, List, Item} from 'semantic-ui-react'
 import PropTypes from "prop-types";
 
 export default function ListItem(props) {
@@ -24,13 +24,12 @@ export default function ListItem(props) {
             <List.Content>
                 <List.Header as='a' onClick={() => onFavoriteClick(favorite)}> {favoriteHeader}
                 </List.Header>
-
                 <List.Description>
                     {favoriteDescription}
                 </List.Description>
-                <List.Description>
-                    <Button onClick={() => onDeleteClick(favorite)}>Delete</Button>
-                </List.Description>
+                <Item.Extra>
+                    <Button size='mini' onClick={() => onDeleteClick(favorite)}>Delete</Button>
+                </Item.Extra>
             </List.Content>
         </List.Item>
 
