@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import ListItem from "./ListItem";
 import {List} from "semantic-ui-react";
+import PropTypes from "prop-types";
 
 
 export default function FavoriteList(props) {
@@ -13,7 +14,18 @@ export default function FavoriteList(props) {
                 <ListItem key={index} handleSetActiveViewPort={handleSetActiveViewPort} favorite={favorite}
                           handleUpdateFavoritesList={handleUpdateFavoritesList}/>
             )}
-
         </List>
     )
+}
+
+FavoriteList.propTypes = {
+    favoriteList: PropTypes.array.isRequired,
+    handleUpdateFavoritesList: PropTypes.func.isRequired,
+    handleSetActiveViewPort: PropTypes.func.isRequired,
+}
+
+FavoriteList.defaultProps = {
+    favoriteList: [],
+    handleUpdateFavoritesList: () => {},
+    handleSetActiveViewPort: () => {}
 }

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Button, List} from 'semantic-ui-react'
-
+import PropTypes from "prop-types";
 
 export default function ListItem(props) {
     const {handleSetActiveViewPort, favorite, handleUpdateFavoritesList } = props
@@ -16,8 +16,6 @@ export default function ListItem(props) {
         handleUpdateFavoritesList(favorite, "delete")
     }
 
-    console.dir(favorite)
-
     return (
         <List.Item>
             <List.Content>
@@ -31,9 +29,19 @@ export default function ListItem(props) {
                     <Button onClick={() => onDeleteClick(favorite)}>Delete</Button>
                 </List.Description>
             </List.Content>
-
-
         </List.Item>
 
     )
+}
+
+ListItem.propTypes = {
+    favorite: PropTypes.object.isRequired,
+    handleUpdateFavoritesList: PropTypes.func.isRequired,
+    handleSetActiveViewPort: PropTypes.func.isRequired,
+}
+
+ListItem.defaultProps = {
+    favorite: {},
+    handleUpdateFavoritesList: () => {},
+    handleSetActiveViewPort: () => {}
 }

@@ -1,7 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MapView renders 1`] = `
-<MapView>
+<MapView
+  updateFavoriteList={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          undefined,
+        ],
+        Array [
+          "click",
+          [Function],
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
   <div
     className="map-container"
   />
