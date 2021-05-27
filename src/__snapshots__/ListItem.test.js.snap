@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem renders list item 1`] = `
+<ListItem
+  favorite={Object {}}
+  handleSetActiveViewPort={[MockFunction]}
+  handleUpdateFavoritesList={[MockFunction]}
+>
+  <ListItem>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <ListContent>
+        <div
+          className="content"
+        >
+          <ListHeader
+            as="a"
+            onClick={[Function]}
+          >
+            <a
+              className="header"
+              onClick={[Function]}
+            >
+               
+              undefined/undefined
+            </a>
+          </ListHeader>
+          <ListDescription>
+            <div
+              className="description"
+            />
+          </ListDescription>
+          <ItemExtra>
+            <div
+              className="extra"
+            >
+              <Button
+                as="button"
+                onClick={[Function]}
+                size="mini"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <button
+                        class="ui mini button"
+                      >
+                        Delete
+                      </button>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <button
+                          class="ui mini button"
+                        >
+                          Delete
+                        </button>,
+                      }
+                    }
+                  >
+                    <button
+                      className="ui mini button"
+                      onClick={[Function]}
+                    >
+                      Delete
+                    </button>
+                  </RefFindNode>
+                </Ref>
+              </Button>
+            </div>
+          </ItemExtra>
+        </div>
+      </ListContent>
+    </div>
+  </ListItem>
+</ListItem>
+`;

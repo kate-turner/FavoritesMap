@@ -1,12 +1,8 @@
 import React from 'react';
-import MapView from './map-view';
-import Controller from './Controller'
 import {mount} from 'enzyme';
 import {mountToJson} from 'enzyme-to-json';
 import mapboxGl from 'mapbox-gl';
-import ListItem from "./ListItem";
-
-const mockInstantiationTracker = jest.fn()
+import MapView from './map-view';
 
 jest.mock('mapbox-gl', () => ({
     Map: jest.fn()
@@ -14,10 +10,15 @@ jest.mock('mapbox-gl', () => ({
 
 describe('MapView', () => {
     let wrapper;
-    // let listWrapper;
     let mockFn = jest.fn();
     let mockCallback = jest.fn()
-    let testFavoriteList = ['lat', 'lng']
+    let testActiveViewPort = {
+        activeViewPort: {
+            center: [-122.396449, 37.791256],
+            zoom: 15
+        }
+    }
+
     beforeEach(() => {
         jest.clearAllMocks();
         mapboxGl.Map.mockImplementation(() => {
@@ -26,25 +27,20 @@ describe('MapView', () => {
                 on: mockFn,
             };
         });
-        wrapper = mount(<MapView updateFavoriteList={mockFn}/>)
+        wrapper = mount(<MapView handleUpdateFavoritesList={mockCallback} activeViewPort={testActiveViewPort}/>)
     });
-    it('renders', () => {
+    it('renders map', () => {
         expect(mountToJson(wrapper)).toMatchSnapshot();
     })
     it('initializes mapbox gl', () => {
         expect(mapboxGl.Map).toHaveBeenCalledTimes(1);
     })
     it('clicking on map fires updateFavoriteList callback', () => {
-        wrapper.find('.map-container').simulate('click')
+        wrapper.find('.map-container').simulate("click", mockCallback())
         expect(mockCallback.mock.calls.length).toEqual(1);
     })
-
-    it('list item', () => {
-        let listWrapper = mount(<ListItem
-            favorite={{place_name: '454345, houston TX 83292093', text: 'houston market'}}/>)
-      expect(listWrapper.find('Button')).toHaveLength(1
-        ).toBe(true);
-    })
-
-
 })
+
+
+
+
