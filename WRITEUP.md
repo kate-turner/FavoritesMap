@@ -1,6 +1,11 @@
 #Katie's POI Favorites Map
 Let me first start by saying, I had a lot of fun working on this take home challenge. It was a joy to develop! 
 
+##User Instructions
+* Click on a POI on the map
+* See the POI is added to your favorites list which will appear on the left
+* Click on a favorite name and the map will move to the POI location
+* Want to delete a favorite? Great! Click the delete button under the desired POI and see that item removed from your favorites list!
 ##My Process
 As a visual person, the first thing I did in starting the challenge was to sketch on graph paper a mockup of the desired UI. Drawing a design helps me engage with the different parts of the system, see how the pieces fit together and start thinking about components, user flow and shared state.
 
