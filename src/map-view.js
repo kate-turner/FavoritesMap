@@ -29,8 +29,10 @@ export default function MapView(props) {
         if (!map.current) return;
         map.current.on("click", async (e) => {
             const featureLocationData = (await reverseGeocode(e.lngLat)).data
-            console.log(featureLocationData)
-            const metaLocationData = {...featureLocationData.features[0], ...e.lngLat}
+            const t = featureLocationData.features[0].properties.category
+            let type = t.split(', ')
+            let category = type[type.length - 1]
+            const metaLocationData = {...featureLocationData.features[0], ...e.lngLat, category}
             handleUpdateFavoritesList(metaLocationData, "add")
         })
     }, []);
